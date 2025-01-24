@@ -158,7 +158,7 @@
 		    if ( navbar.is(':visible')) {
 		    	navbar.removeClass('in');
 		    	navbar.attr('aria-expanded', 'false');
-		    	$('.js-porfolio-nav-toggle').removeClass('active');
+		    	$('.js-portfolio-nav-toggle').removeClass('active');
 		    }
 
 		    event.preventDefault();
