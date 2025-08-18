@@ -10,11 +10,15 @@ import Experience from './components/Experience';
 import Work from './components/Work';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-class App extends Component {
-  constructor(props) {
+type AppState = {
+  isMenuOpen: boolean;
+};
+
+class App extends Component<Record<string, never>, AppState> {
+  constructor(props: Record<string, never>) {
     super(props);
     this.state = {
       isMenuOpen: false,
@@ -23,7 +27,7 @@ class App extends Component {
   }
 
   toggleMenu() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isMenuOpen: !prevState.isMenuOpen,
     }));
   }
@@ -53,3 +57,4 @@ class App extends Component {
 }
 
 export default App;
+
