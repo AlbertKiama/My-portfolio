@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ThemeProvider, useTheme } from '@/components/theme-provider';
+import { Button } from '@/components/ui/button';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
 import About from './components/About';
@@ -17,7 +19,17 @@ type AppState = {
   isMenuOpen: boolean;
 };
 
-class App extends Component<Record<string, never>, AppState> {
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const next = theme === 'dark' ? 'light' : 'dark';
+  return (
+    <Button variant="outline" size="sm" onClick={() => setTheme(next)}>
+      Toggle {next}
+    </Button>
+  );
+}
+
+class AppContent extends Component<Record<string, never>, AppState> {
   constructor(props: Record<string, never>) {
     super(props);
     this.state = {
@@ -37,7 +49,10 @@ class App extends Component<Record<string, never>, AppState> {
       <div id="portfolio-page" className={this.state.isMenuOpen ? 'offcanvas' : ''}>
         <div className="container-wrap">
           <a href="#" className="js-portfolio-nav-toggle portfolio-nav-toggle" onClick={this.toggleMenu}><i></i></a>
-          <Sidebar></Sidebar>
+          <div className="flex justify-between items-center px-4 py-2">
+            <Sidebar></Sidebar>
+            <ThemeToggle />
+          </div>
           <div id="portfolio-main">
             <Home></Home>
             <About></About>
@@ -56,5 +71,11 @@ class App extends Component<Record<string, never>, AppState> {
   }
 }
 
-export default App;
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
 
