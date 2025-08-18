@@ -35,3 +35,15 @@
     color: hsl(var(--foreground));
   }
 }
+
+@layer base {
+  h1 { @apply text-4xl font-bold tracking-tight md:text-5xl; }
+  h2 { @apply text-3xl font-semibold tracking-tight md:text-4xl; }
+  h3 { @apply text-2xl font-semibold tracking-tight; }
+  p { @apply leading-7; }
+}
+
+@layer utilities {
+  .container-section { @apply mx-auto w-full max-w-6xl px-4; }
+  .section { @apply py-12 md:py-16; }
+}
