@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import AnimateOnScroll from './AnimateOnScroll';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 export default class Blog extends Component {
   render() {
@@ -16,51 +18,31 @@ export default class Blog extends Component {
                 </div>
               </div>
             </AnimateOnScroll>
-            <div className="row">
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 col-sm-6">
-                  <div className="blog-entry">
-                    <a href="blog.html" className="blog-img"><img src="images/Blog 01.jpg" className="img-responsive" alt="HTML5 Bootstrap Template by portfolio.com" /></a>
-                    <div className="desc">
-                      <span><small>April 14, 2018 </small> | <small> Graphics Design </small> | <small> <i className="icon-bubble3"></i> 4</small></span>
-                      <h3><a href="blog.html">Adobe illustrator for Beginners</a></h3>
-                      <p>Tools for design are many and intensively developed. This is all that you need to become the best graphic artist...</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInRight">
-                <div className="col-md-4 col-sm-6">
-                  <div className="blog-entry">
-                    <a href="blog.html" className="blog-img"><img src="images/Blog 02.jpg" className="img-responsive" alt="HTML5 Bootstrap Template by portfolio.com" /></a>
-                    <div className="desc">
-                      <span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i className="icon-bubble3"></i> 4</small></span>
-                      <h3><a href="blog.html">Wordpress for a Beginner</a></h3>
-                      <p>Web development just got easier, we can all now agree that it is much simplified thus simple to desing..</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 col-sm-6">
-                  <div className="blog-entry">
-                    <a href="blog.html" className="blog-img"><img src="images/Blog 03.jpg" className="img-responsive" alt="HTML5 Bootstrap Template by portfolio.com" /></a>
-                    <div className="desc">
-                      <span><small>April 14, 2018 </small> | <small> Inspiration </small> | <small> <i className="icon-bubble3"></i> 4</small></span>
-                      <h3><a href="blog.html">Make website from scratch</a></h3>
-                      <p>Creation same as development starts from as small as one line of code, It all starts by one step at a time...</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                { title: 'Adobe illustrator for Beginners', date: 'April 14, 2018', tag: 'Graphics Design', img: 'images/Blog 01.jpg', excerpt: 'Tools for design are many and intensively developed. This is all that you need to become the best graphic artist...' },
+                { title: 'Wordpress for a Beginner', date: 'April 14, 2018', tag: 'Web Design', img: 'images/Blog 02.jpg', excerpt: 'Web development just got easier, we can all now agree that it is much simplified thus simple to design..' },
+                { title: 'Make website from scratch', date: 'April 14, 2018', tag: 'Inspiration', img: 'images/Blog 03.jpg', excerpt: 'Creation same as development starts from as small as one line of code, It all starts by one step at a time...' },
+              ].map((post) => (
+                <AnimateOnScroll animation="fadeInLeft" key={post.title}>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center justify-between">
+                        <span>{post.title}</span>
+                        <Badge variant="secondary">{post.tag}</Badge>
+                      </CardTitle>
+                      <CardDescription>{post.date}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video w-full overflow-hidden rounded-md border">
+                        <img src={post.img} alt={post.title} className="h-full w-full object-cover" />
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground">{post.excerpt}</p>
+                    </CardContent>
+                  </Card>
+                </AnimateOnScroll>
+              ))}
             </div>
-            <AnimateOnScroll animation="fadeInLeft">
-              <div className="row">
-                <div className="col-md-12">
-                  <p><a href="#" className="btn btn-primary btn-lg btn-load-more">Load more <i className="icon-reload"></i></a></p>
-                </div>
-              </div>
-            </AnimateOnScroll>
           </div>
         </section>
       </Element>

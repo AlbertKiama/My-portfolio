@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ThemeProvider, useTheme } from '@/components/theme-provider';
 import { Button } from '@/components/ui/button';
 import Sidebar from './components/Sidebar';
+import { Navbar } from '@/components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
@@ -48,10 +49,13 @@ class AppContent extends Component<Record<string, never>, AppState> {
     return (
       <div id="portfolio-page" className={this.state.isMenuOpen ? 'offcanvas' : ''}>
         <div className="container-wrap">
+          <Navbar />
           <a href="#" className="js-portfolio-nav-toggle portfolio-nav-toggle" onClick={this.toggleMenu}><i></i></a>
-          <div className="flex justify-between items-center px-4 py-2">
+          <div className="px-4 py-2 md:flex md:items-start md:gap-8">
             <Sidebar></Sidebar>
-            <ThemeToggle />
+            <div className="ml-auto hidden md:block">
+              <ThemeToggle />
+            </div>
           </div>
           <div id="portfolio-main">
             <Home></Home>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import Slider from 'react-slick';
 import withFullHeight from './withFullHeight';
+import { Button } from '@/components/ui/button';
 
 class Home extends Component {
   render() {
@@ -31,7 +32,7 @@ class Home extends Component {
                           <h1>Hi! <br/>I'm Albert</h1>
                           <h2>A versatile full-stack developer with expertise in both
                             front-end and back-end technologies.</h2>
-                          <p><a href="#/" className="btn btn-primary btn-learn">Download CV <i className="icon-download4"></i></a></p>
+                          <p><Button>Download CV</Button></p>
                         </div>
                       </div>
                     </div>
@@ -50,7 +51,7 @@ class Home extends Component {
                           <h1>I am <br/>a Developer</h1>
                           <h2>A versatile full-stack developer with expertise in both
                             front-end and back-end technologies.</h2>
-                          <p><a href="#/" className="btn btn-primary btn-learn">View Portfolio <i className="icon-briefcase3"></i></a></p>
+                          <p><Button variant="secondary">View Portfolio</Button></p>
                         </div>
                       </div>
                     </div>

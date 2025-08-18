@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import AnimateOnScroll from './AnimateOnScroll';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 
 export default class Contact extends Component {
   render() {
@@ -53,21 +57,25 @@ export default class Contact extends Component {
                 <AnimateOnScroll animation="fadeInRight">
                   <div className="row">
                     <div className="col-md-10 col-md-offset-1 col-md-pull-1">
-                      <form action="">
-                        <div className="form-group">
-                          <input type="text" className="form-control" placeholder="Name" />
+                      <form action="#" className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Name</Label>
+                          <Input id="name" name="name" placeholder="Your name" />
                         </div>
-                        <div className="form-group">
-                          <input type="text" className="form-control" placeholder="Email" />
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input id="email" name="email" type="email" placeholder="you@example.com" />
                         </div>
-                        <div className="form-group">
-                          <input type="text" className="form-control" placeholder="Subject" />
+                        <div className="space-y-2">
+                          <Label htmlFor="subject">Subject</Label>
+                          <Input id="subject" name="subject" placeholder="Subject" />
                         </div>
-                        <div className="form-group">
-                          <textarea name="" id="message" cols="30" rows="7" className="form-control" placeholder="Message"></textarea>
+                        <div className="space-y-2">
+                          <Label htmlFor="message">Message</Label>
+                          <Textarea id="message" name="message" rows={7} placeholder="Write your message..." />
                         </div>
-                        <div className="form-group">
-                          <input type="submit" className="btn btn-primary btn-send-message" value="Send Message" />
+                        <div>
+                          <Button type="submit">Send Message</Button>
                         </div>
                       </form>
                     </div>
