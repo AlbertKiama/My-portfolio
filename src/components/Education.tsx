@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import AnimateOnScroll from './AnimateOnScroll';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default class Education extends Component {
   render() {
@@ -17,90 +19,43 @@ export default class Education extends Component {
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fadeInLeft">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="fancy-collapse-panel">
-                    <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                      <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingOne">
-                          <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Master Degree Graphic Design
-                            </a>
-                          </h4>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Education</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Master Degree Graphic Design</AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                          <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                         </div>
-                        <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div className="panel-body">
-                            <div className="row">
-                              <div className="col-md-6">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                              </div>
-                              <div className="col-md-6">
-                                <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingTwo">
-                          <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Bachelor Degree of Computer Science
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div className="panel-body">
-                            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <ul>
-                              <li>Separated they live in Bookmarksgrove right</li>
-                              <li>Separated they live in Bookmarksgrove right</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingThree">
-                          <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Diploma in Information Technology
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div className="panel-body">
-                            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingFour">
-                          <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Diploma in Information Technology
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseFour" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                          <div className="panel-body">
-                            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingFive">
-                          <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">High School Secondary Education
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseFive" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                          <div className="panel-body">
-                            <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                      <AccordionTrigger>Bachelor Degree of Computer Science</AccordionTrigger>
+                      <AccordionContent>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                        <ul className="list-disc pl-5"><li>Separated they live in Bookmarksgrove right</li><li>Separated they live in Bookmarksgrove right</li></ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                      <AccordionTrigger>Diploma in Information Technology</AccordionTrigger>
+                      <AccordionContent>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                      <AccordionTrigger>High School Secondary Education</AccordionTrigger>
+                      <AccordionContent>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardContent>
+              </Card>
             </AnimateOnScroll>
           </div>
         </section>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import AnimateOnScroll from './AnimateOnScroll';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Lightbulb, Globe, Smartphone, Layers3, Database, Monitor } from 'lucide-react';
 
 export default class Services extends Component {
   render() {
@@ -16,85 +18,28 @@ export default class Services extends Component {
                 </div>
               </div>
             </AnimateOnScroll>
-            <div className="row row-pt-md">
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-1">
-                    <span className="icon">
-                      <i className="icon-bulb"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Innovative Ideas</h3>
-                      <p>Creative thinker, problem solver, adaptable, visionary, dynamic & collaborative.</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-2">
-                    <span className="icon">
-                      <i className="icon-globe-outline"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Web Design</h3>
-                      <p>Design, develop, test, and maintain software solutions to solve problems.</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-3">
-                    <span className="icon">
-                      <i className="icon-phone3"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Application</h3>
-                      <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-4">
-                    <span className="icon">
-                      <i className="icon-layers2"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Graphic Design</h3>
-                      <p>"Creative graphic designer skilled in branding, illustration, and digital art."</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-5">
-                    <span className="icon">
-                      <i className="icon-data"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Software</h3>
-                      <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-              <AnimateOnScroll animation="fadeInLeft">
-                <div className="col-md-4 text-center">
-                  <div className="services color-6">
-                    <span className="icon">
-                      <i className="icon-phone3"></i>
-                    </span>
-                    <div className="desc">
-                      <h3>Application</h3>
-                      <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimateOnScroll>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                { icon: Lightbulb, title: 'Innovative Ideas', desc: 'Creative thinker, problem solver, adaptable, visionary, dynamic & collaborative.' },
+                { icon: Globe, title: 'Web Design', desc: 'Design, develop, test, and maintain software solutions to solve problems.' },
+                { icon: Smartphone, title: 'Application', desc: 'Separated they live in Bookmarksgrove right at the coast of the Semantics' },
+                { icon: Layers3, title: 'Graphic Design', desc: 'Creative graphic designer skilled in branding, illustration, and digital art.' },
+                { icon: Database, title: 'Software', desc: 'Reliable backends with robust data models and APIs.' },
+                { icon: Monitor, title: 'Frontend Engineering', desc: 'Accessible, responsive and fast user interfaces.' },
+              ].map((s) => (
+                <AnimateOnScroll animation="fadeInLeft" key={s.title}>
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center gap-2">
+                        <s.icon className="h-6 w-6 text-primary" />
+                        <CardTitle>{s.title}</CardTitle>
+                      </div>
+                      <CardDescription>{s.desc}</CardDescription>
+                    </CardHeader>
+                    <CardContent></CardContent>
+                  </Card>
+                </AnimateOnScroll>
+              ))}
             </div>
           </div>
         </section>
