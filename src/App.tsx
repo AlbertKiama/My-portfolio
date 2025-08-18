@@ -3,6 +3,7 @@ import { ThemeProvider, useTheme } from '@/components/theme-provider';
 import { Button } from '@/components/ui/button';
 import Sidebar from './components/Sidebar';
 import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
@@ -68,6 +69,7 @@ class AppContent extends Component<Record<string, never>, AppState> {
             <Work></Work>
             <Blog></Blog>
             <Contact></Contact>
+            <Footer />
           </div>
         </div>
       </div>

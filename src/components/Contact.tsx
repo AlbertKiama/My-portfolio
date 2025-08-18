@@ -6,7 +6,62 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 
-export default class Contact extends Component {
+type ContactState = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  errors: Partial<Record<'name' | 'email' | 'subject' | 'message', string>>;
+  status: 'idle' | 'submitting' | 'success' | 'error';
+};
+
+export default class Contact extends Component<Record<string, never>, ContactState> {
+  constructor(props: Record<string, never>) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      errors: {},
+      status: 'idle',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+    this.setState((prev) => ({ ...prev, [name]: value } as ContactState));
+  }
+
+  validate(): Partial<ContactState['errors']> {
+    const errors: Partial<ContactState['errors']> = {};
+    if (!this.state.name.trim()) errors.name = 'Name is required';
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email);
+    if (!emailOk) errors.email = 'Valid email is required';
+    if (!this.state.subject.trim()) errors.subject = 'Subject is required';
+    if (!this.state.message.trim()) errors.message = 'Message is required';
+    return errors;
+  }
+
+  async handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const errors = this.validate();
+    if (Object.keys(errors).length > 0) {
+      this.setState({ errors });
+      return;
+    }
+    this.setState({ status: 'submitting', errors: {} });
+    try {
+      // Simulate async submit
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      this.setState({ status: 'success', name: '', email: '', subject: '', message: '' });
+    } catch (e) {
+      this.setState({ status: 'error' });
+    }
+  }
+
   render() {
     return (
       <Element name="contact">
@@ -57,25 +112,45 @@ export default class Contact extends Component {
                 <AnimateOnScroll animation="fadeInRight">
                   <div className="row">
                     <div className="col-md-10 col-md-offset-1 col-md-pull-1">
-                      <form action="#" className="space-y-4">
+                      <form onSubmit={this.handleSubmit} className="space-y-4">
                         <div className="space-y-2">
                           <Label htmlFor="name">Name</Label>
-                          <Input id="name" name="name" placeholder="Your name" />
+                          <Input id="name" name="name" placeholder="Your name" value={this.state.name} onChange={this.handleChange} aria-invalid={!!this.state.errors.name} aria-describedby="name-error" />
+                          {this.state.errors.name && (
+                            <p id="name-error" className="text-sm text-red-600">{this.state.errors.name}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
-                          <Input id="email" name="email" type="email" placeholder="you@example.com" />
+                          <Input id="email" name="email" type="email" placeholder="you@example.com" value={this.state.email} onChange={this.handleChange} aria-invalid={!!this.state.errors.email} aria-describedby="email-error" />
+                          {this.state.errors.email && (
+                            <p id="email-error" className="text-sm text-red-600">{this.state.errors.email}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="subject">Subject</Label>
-                          <Input id="subject" name="subject" placeholder="Subject" />
+                          <Input id="subject" name="subject" placeholder="Subject" value={this.state.subject} onChange={this.handleChange} aria-invalid={!!this.state.errors.subject} aria-describedby="subject-error" />
+                          {this.state.errors.subject && (
+                            <p id="subject-error" className="text-sm text-red-600">{this.state.errors.subject}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="message">Message</Label>
-                          <Textarea id="message" name="message" rows={7} placeholder="Write your message..." />
+                          <Textarea id="message" name="message" rows={7} placeholder="Write your message..." value={this.state.message} onChange={this.handleChange} aria-invalid={!!this.state.errors.message} aria-describedby="message-error" />
+                          {this.state.errors.message && (
+                            <p id="message-error" className="text-sm text-red-600">{this.state.errors.message}</p>
+                          )}
                         </div>
-                        <div>
-                          <Button type="submit">Send Message</Button>
+                        <div className="flex items-center gap-3">
+                          <Button type="submit" disabled={this.state.status === 'submitting'}>
+                            {this.state.status === 'submitting' ? 'Sending…' : 'Send Message'}
+                          </Button>
+                          {this.state.status === 'success' && (
+                            <span className="text-sm text-green-600">Message sent!</span>
+                          )}
+                          {this.state.status === 'error' && (
+                            <span className="text-sm text-red-600">Failed to send. Try again.</span>
+                          )}
                         </div>
                       </form>
                     </div>

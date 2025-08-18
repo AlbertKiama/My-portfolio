@@ -3,6 +3,7 @@ import { Element } from 'react-scroll';
 import Slider from 'react-slick';
 import withFullHeight from './withFullHeight';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 class Home extends Component {
   render() {
@@ -27,14 +28,16 @@ class Home extends Component {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 slider-text">
-                      <div className="slider-text-inner">
-                        <div className="desc">
-                          <h1>Hi! <br/>I'm Albert</h1>
-                          <h2>A versatile full-stack developer with expertise in both
-                            front-end and back-end technologies.</h2>
-                          <p><Button>Download CV</Button></p>
-                        </div>
-                      </div>
+                      <Card className="bg-background/70 backdrop-blur">
+                        <CardContent className="p-6">
+                          <div className="desc">
+                            <h1>Hi! <br/>I'm Albert</h1>
+                            <h2>A versatile full-stack developer with expertise in both
+                              front-end and back-end technologies.</h2>
+                            <p><Button>Download CV</Button></p>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
                 </div>
@@ -46,14 +49,16 @@ class Home extends Component {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 slider-text">
-                      <div className="slider-text-inner">
-                        <div className="desc">
-                          <h1>I am <br/>a Developer</h1>
-                          <h2>A versatile full-stack developer with expertise in both
-                            front-end and back-end technologies.</h2>
-                          <p><Button variant="secondary">View Portfolio</Button></p>
-                        </div>
-                      </div>
+                      <Card className="bg-background/70 backdrop-blur">
+                        <CardContent className="p-6">
+                          <div className="desc">
+                            <h1>I am <br/>a Developer</h1>
+                            <h2>A versatile full-stack developer with expertise in both
+                              front-end and back-end technologies.</h2>
+                            <p><Button variant="secondary">View Portfolio</Button></p>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
                 </div>
