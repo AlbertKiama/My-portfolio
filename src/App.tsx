@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Sidebar from './components/Sidebar';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
@@ -80,6 +81,7 @@ class AppContent extends Component<Record<string, never>, AppState> {
 export default function App() {
   return (
     <ThemeProvider>
+      <SEO />
       <AppContent />
     </ThemeProvider>
   );

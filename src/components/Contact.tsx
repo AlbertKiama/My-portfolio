@@ -54,8 +54,24 @@ export default class Contact extends Component<Record<string, never>, ContactSta
     }
     this.setState({ status: 'submitting', errors: {} });
     try {
-      // Simulate async submit
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
+      if (!endpoint) {
+        // fallback simulation when no endpoint configured
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        this.setState({ status: 'success', name: '', email: '', subject: '', message: '' });
+        return;
+      }
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          subject: this.state.subject,
+          message: this.state.message,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed');
       this.setState({ status: 'success', name: '', email: '', subject: '', message: '' });
     } catch (e) {
       this.setState({ status: 'error' });
