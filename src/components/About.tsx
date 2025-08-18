@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import AnimateOnScroll from './AnimateOnScroll';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Code, Globe, Lightbulb, Smartphone } from 'lucide-react';
 
 export default class About extends Component {
   render() {
@@ -22,48 +26,72 @@ export default class About extends Component {
                     </div>
                   </div>
                 </AnimateOnScroll>
-                <div className="row">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                   <AnimateOnScroll animation="fadeInLeft">
-                    <div className="col-md-3">
-                      <div className="services color-1">
-                        <span className="icon2"><i className="fa-regular fa-lightbulb"></i></span>
-                        <h3>Graphic Design</h3>
-                      </div>
-                    </div>
+                    <Card>
+                      <CardHeader>
+                        <Lightbulb className="h-6 w-6 text-primary" />
+                        <CardTitle>Graphic Design</CardTitle>
+                        <CardDescription>Visual identities and assets that speak.</CardDescription>
+                      </CardHeader>
+                    </Card>
                   </AnimateOnScroll>
                   <AnimateOnScroll animation="fadeInRight">
-                    <div className="col-md-3">
-                      <div className="services color-2">
-                        <span className="icon2"><i className="fa-solid fa-globe"></i></span>
-                        <h3>Web Design</h3>
-                      </div>
-                    </div>
+                    <Card>
+                      <CardHeader>
+                        <Globe className="h-6 w-6 text-primary" />
+                        <CardTitle>Web Design</CardTitle>
+                        <CardDescription>Accessible, responsive user experiences.</CardDescription>
+                      </CardHeader>
+                    </Card>
                   </AnimateOnScroll>
                   <AnimateOnScroll animation="fadeInTop">
-                    <div className="col-md-3">
-                      <div className="services color-3">
-                        <span className="icon2"><i className="fa-brands fa-react"></i></span>
-                        <h3>Software</h3>
-                      </div>
-                    </div>
+                    <Card>
+                      <CardHeader>
+                        <Code className="h-6 w-6 text-primary" />
+                        <CardTitle>Software</CardTitle>
+                        <CardDescription>Robust, scalable engineering.</CardDescription>
+                      </CardHeader>
+                    </Card>
                   </AnimateOnScroll>
                   <AnimateOnScroll animation="fadeInBottom">
-                    <div className="col-md-3">
-                      <div className="services color-4">
-                        <span className="icon2"><i className="fa-solid fa-mobile-screen-button"></i></span>
-                        <h3>Application</h3>
-                      </div>
-                    </div>
+                    <Card>
+                      <CardHeader>
+                        <Smartphone className="h-6 w-6 text-primary" />
+                        <CardTitle>Application</CardTitle>
+                        <CardDescription>Native-feel mobile and web apps.</CardDescription>
+                      </CardHeader>
+                    </Card>
                   </AnimateOnScroll>
                 </div>
-                <div className="row">
+                <div className="mt-8">
                   <AnimateOnScroll animation="fadeInLeft">
-                    <div className="col-md-12">
-                      <div className="hire">
-                        <h2>I am happy to know you <br/>that 300+ projects done sucessfully!</h2>
-                        <a href="#" className="btn-hire">Hire me</a>
-                      </div>
-                    </div>
+                    <Card>
+                      <CardContent className="pt-6">
+                        <Tabs defaultValue="skills">
+                          <TabsList>
+                            <TabsTrigger value="skills">Skills</TabsTrigger>
+                            <TabsTrigger value="stack">Stack</TabsTrigger>
+                            <TabsTrigger value="values">Values</TabsTrigger>
+                          </TabsList>
+                          <TabsContent value="skills" className="space-x-2 space-y-2">
+                            <Badge>Full-stack</Badge>
+                            <Badge variant="secondary">Performance</Badge>
+                            <Badge variant="outline">Accessibility</Badge>
+                          </TabsContent>
+                          <TabsContent value="stack" className="space-x-2 space-y-2">
+                            <Badge>React</Badge>
+                            <Badge>TypeScript</Badge>
+                            <Badge>Node.js</Badge>
+                          </TabsContent>
+                          <TabsContent value="values" className="space-x-2 space-y-2">
+                            <Badge>Clean Code</Badge>
+                            <Badge>DX</Badge>
+                            <Badge>Resilience</Badge>
+                          </TabsContent>
+                        </Tabs>
+                      </CardContent>
+                    </Card>
                   </AnimateOnScroll>
                 </div>
               </div>
